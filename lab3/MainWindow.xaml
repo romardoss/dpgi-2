@@ -5,17 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
+        Title="MainWindow" Height="400" Width="600" Background="#5755FE">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="20"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="20, 0, 20, 0"/>
         </Style>
         <Style TargetType="TextBlock">
-            
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#FFF7FC"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="20, 0, 20, 0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFF7FC"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -24,7 +27,7 @@
             <Setter Property="Opacity" Value="30"/>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="5" Background="#8B93FF">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -33,7 +36,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0">Interval Timer</TextBlock>
+        <DockPanel Grid.Row="0" LastChildFill="True">
+            <Button DockPanel.Dock="Right">
+                <Image Source="/icons/close.png"/>
+            </Button>
+            <TextBlock DockPanel.Dock="Left">Interval Timer</TextBlock>
+        </DockPanel>
         <StackPanel Grid.Row="1">
             <Slider></Slider>
         </StackPanel>
@@ -55,7 +63,9 @@
                 <Button>
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox>5</TextBox>
+                <TextBox>00</TextBox>
+                <TextBlock>:</TextBlock>
+                <TextBox>00</TextBox>
                 <Button>
                     <Image Source="/icons/add.png" />
                 </Button>
@@ -67,12 +77,14 @@
                 <Button>
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox>5</TextBox>
+                <TextBox>00</TextBox>
+                <TextBlock>:</TextBlock>
+                <TextBox>00</TextBox>
                 <Button>
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="5" Style="{x:Null}">START</Button>
+        <Button Grid.Row="5" Style="{x:Null}" Background="#FF71CD" Foreground="#FFF7FC">START</Button>
     </Grid>
 </Window>
