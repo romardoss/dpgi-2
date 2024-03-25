@@ -22,7 +22,6 @@
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock>SETS</TextBlock>
             <StackPanel Orientation="Horizontal">
-
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Vertical">
