@@ -6,6 +6,24 @@
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="20, 0, 20, 0"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Opacity" Value="30"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -22,20 +40,39 @@
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock>SETS</TextBlock>
             <StackPanel Orientation="Horizontal">
+                <Button>
+                    <Image Source="/icons/remove.png" />
+                </Button>
+                <TextBox>5</TextBox>
+                <Button>
+                    <Image Source="/icons/add.png" />
+                </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Vertical">
             <TextBlock>WORK</TextBlock>
             <StackPanel Orientation="Horizontal">
-
+                <Button>
+                    <Image Source="/icons/remove.png" />
+                </Button>
+                <TextBox>5</TextBox>
+                <Button>
+                    <Image Source="/icons/add.png" />
+                </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="4" Orientation="Vertical">
             <TextBlock>REST</TextBlock>
             <StackPanel Orientation="Horizontal">
-
+                <Button>
+                    <Image Source="/icons/remove.png" />
+                </Button>
+                <TextBox>5</TextBox>
+                <Button>
+                    <Image Source="/icons/add.png" />
+                </Button>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="5">START</Button>
+        <Button Grid.Row="5" Style="{x:Null}">START</Button>
     </Grid>
 </Window>
