@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="600">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0">Interval Timer</TextBlock>
+        <StackPanel Grid.Row="1">
+            <Slider></Slider>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock>SETS</TextBlock>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Vertical">
+            <TextBlock>WORK</TextBlock>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Vertical">
+            <TextBlock>REST</TextBlock>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Row="5">START</Button>
     </Grid>
 </Window>
