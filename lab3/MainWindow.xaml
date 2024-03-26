@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600" Background="#5755FE">
+        Title="MainWindow" Height="400" Width="600" Background="#5755FE"
+        >
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="20"/>
@@ -15,6 +16,7 @@
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="#FFF7FC"/>
+            <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="Transparent"/>
@@ -27,7 +29,7 @@
             <Setter Property="Opacity" Value="30"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="5" Background="#8B93FF">
+    <Grid Margin="10" Background="#8B93FF">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -37,10 +39,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="True">
-            <Button DockPanel.Dock="Right">
+            <Button x:Name="CloseButton" DockPanel.Dock="Right" Click="CloseButton_Click">
                 <Image Source="/icons/close.png"/>
             </Button>
-            <TextBlock DockPanel.Dock="Left">Interval Timer</TextBlock>
+            <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="10">Interval Timer</TextBlock>
         </DockPanel>
         <StackPanel Grid.Row="1">
             <Slider></Slider>
