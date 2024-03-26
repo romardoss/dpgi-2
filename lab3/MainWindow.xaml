@@ -37,14 +37,6 @@
             <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Template" Value="{StaticResource NoMouseOverButtonTemplate}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF71CD"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
@@ -57,6 +49,14 @@
             <Setter Property="Foreground" Value="#FFF7FC"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF71CD"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -77,16 +77,16 @@
             <Button x:Name="CloseButton" DockPanel.Dock="Right" Click="CloseButton_Click">
                 <Image Source="/icons/close.png"/>
             </Button>
-            <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="10">Interval Timer</TextBlock>
+            <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="15">Interval Timer</TextBlock>
         </DockPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock>SETS</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <Button>
+                <Button x:Name="SetsMinusButton" Click="SetsMinusButton_Click" >
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox Width="24" TextAlignment="Center">5</TextBox>
-                <Button>
+                <TextBox x:Name="SetsBox" Width="24" TextAlignment="Center" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBox_TextChanged">5</TextBox>
+                <Button x:Name="SetsPlusButton" Click="SetsPlusButton_Click">
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
@@ -94,13 +94,13 @@
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock>WORK</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <Button>
+                <Button x:Name="WorkMinusButton" Click="WorkMinusButton_Click">
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox Width="24">00</TextBox>
+                <TextBox x:Name="WorkMinBox" Width="24"  PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxMinutes_TextChanged" LostFocus="TextBox_LostFocus">00</TextBox>
                 <TextBlock>:</TextBlock>
-                <TextBox Width="24">00</TextBox>
-                <Button>
+                <TextBox x:Name="WorkSecBox" Width="24" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxSeconds_TextChanged" LostFocus="TextBox_LostFocus">00</TextBox>
+                <Button x:Name="WorkPlusButton" Click="WorkPlusButton_Click">
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
@@ -108,13 +108,13 @@
         <StackPanel Grid.Row="3" Orientation="Vertical">
             <TextBlock>REST</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <Button>
+                <Button x:Name="RestMinusButton" Click="RestMinusButton_Click">
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox Width="24">00</TextBox>
+                <TextBox x:Name="RestMinBox" Width="24"  PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxMinutes_TextChanged" LostFocus="TextBox_LostFocus">00</TextBox>
                 <TextBlock>:</TextBlock>
-                <TextBox Width="24">00</TextBox>
-                <Button>
+                <TextBox x:Name="RestSecBox" Width="24" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxSeconds_TextChanged" LostFocus="TextBox_LostFocus">00</TextBox>
+                <Button x:Name="RestPlusButton" Click="RestPlusButton_Click">
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
