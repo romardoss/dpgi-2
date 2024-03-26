@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace lab3
 {
@@ -47,6 +49,39 @@ namespace lab3
             
             sound.Load();
             sound.Play();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Length > 2)
+            {
+                ((TextBox)sender).Text = "99";
+            }
+        }
+
+        private void TextBoxMinutes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = ((TextBox)sender).Text;
+
+            if (text.Length > 2)
+            {
+                ((TextBox)sender).Text = "59";
+            }
+
+            if(text.Length > 0)
+            {
+                int parse = int.Parse(text);
+                if (parse >= 60)
+                {
+                    ((TextBox)sender).Text = "59";
+                }
+            }
         }
     }
 }
