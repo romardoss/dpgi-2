@@ -59,29 +59,97 @@ namespace lab3
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (((TextBox)sender).Text.Length > 2)
-            {
-                ((TextBox)sender).Text = "99";
-            }
+            SetTextBoxAfterTextChanged(sender, "99", "1", 100, 1);
         }
 
         private void TextBoxMinutes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetTextBoxAfterTextChanged(sender, "99", "00", 100, 0);
+        }
+
+        private void TextBoxSeconds_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetTextBoxAfterTextChanged(sender, "59", "00", 60, 0);
+        }
+
+        private void SetTextBoxAfterTextChanged(object sender, string upValue, string downValue, int upLimit, int downLimit)
         {
             string text = ((TextBox)sender).Text;
 
             if (text.Length > 2)
             {
-                ((TextBox)sender).Text = "59";
+                ((TextBox)sender).Text = upValue;
             }
 
-            if(text.Length > 0)
+            if (text.Length > 0)
             {
                 int parse = int.Parse(text);
-                if (parse >= 60)
+                if (parse >= upLimit)
                 {
-                    ((TextBox)sender).Text = "59";
+                    ((TextBox)sender).Text = upValue;
+                }
+                else if (parse < downLimit)
+                {
+                    ((TextBox)sender).Text = downValue;
                 }
             }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Length == 1)
+            {
+                ((TextBox)sender).Text = "0" + ((TextBox)sender).Text;
+            }
+        }
+
+        private void SetsPlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(SetsBox, true);
+        }
+
+        private void SetsMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(SetsBox, false);
+        }
+
+        private void WorkMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(WorkSecBox, false);
+            TextBox_LostFocus(WorkSecBox, e);
+        }
+
+        private void WorkPlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(WorkSecBox, true);
+            TextBox_LostFocus(WorkSecBox, e);
+        }
+
+        private void RestMinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(RestSecBox, false);
+            TextBox_LostFocus(RestSecBox, e);
+        }
+
+        private void RestPlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlusMinusButton(RestSecBox, true);
+            TextBox_LostFocus(RestSecBox, e);
+        }
+
+        private void PlusMinusButton(TextBox boxName, bool isAdd)
+        {
+            string text = boxName.Text;
+            if (text.Length == 0)
+            {
+                text = "0";
+            }
+
+            int num = int.Parse(text);
+            if (isAdd) { num++; }
+            else { num--; }
+
+            boxName.Text = num.ToString();
         }
     }
 }
