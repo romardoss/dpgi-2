@@ -5,22 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600" Background="#5755FE"
-        >
+        Title="MainWindow" Height="450" Width="400" Background="#FF71CD"
+        WindowStyle="ToolWindow">
     <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+          BorderBrush="{TemplateBinding BorderBrush}"  
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         <Style TargetType="Button">
             <Setter Property="Width" Value="20"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Margin" Value="20, 0, 20, 0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Template" Value="{StaticResource NoMouseOverButtonTemplate}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF71CD"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="#FFF7FC"/>
             <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
+            <Setter Property="FontSize" Value="18"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#FFF7FC"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -29,14 +65,13 @@
             <Setter Property="Opacity" Value="30"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="10" Background="#8B93FF">
+    <Grid Margin="0" Background="#5755FE">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="72"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="True">
             <Button x:Name="CloseButton" DockPanel.Dock="Right" Click="CloseButton_Click">
@@ -44,49 +79,50 @@
             </Button>
             <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="10">Interval Timer</TextBlock>
         </DockPanel>
-        <StackPanel Grid.Row="1">
-            <Slider></Slider>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Vertical">
+        <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock>SETS</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button>
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox>5</TextBox>
+                <TextBox Width="24" TextAlignment="Center">5</TextBox>
+                <Button>
+                    <Image Source="/icons/add.png" />
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock>WORK</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button>
+                    <Image Source="/icons/remove.png" />
+                </Button>
+                <TextBox Width="24">00</TextBox>
+                <TextBlock>:</TextBlock>
+                <TextBox Width="24">00</TextBox>
                 <Button>
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Vertical">
-            <TextBlock>WORK</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Button>
-                    <Image Source="/icons/remove.png" />
-                </Button>
-                <TextBox>00</TextBox>
-                <TextBlock>:</TextBlock>
-                <TextBox>00</TextBox>
-                <Button>
-                    <Image Source="/icons/add.png" />
-                </Button>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Row="4" Orientation="Vertical">
             <TextBlock>REST</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button>
                     <Image Source="/icons/remove.png" />
                 </Button>
-                <TextBox>00</TextBox>
+                <TextBox Width="24">00</TextBox>
                 <TextBlock>:</TextBlock>
-                <TextBox>00</TextBox>
+                <TextBox Width="24">00</TextBox>
                 <Button>
                     <Image Source="/icons/add.png" />
                 </Button>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="5" Style="{x:Null}" Background="#FF71CD" Foreground="#FFF7FC">START</Button>
+        <Button x:Name="StartButton" Grid.Row="4" Style="{x:Null}" Background="#8B93FF" 
+                Foreground="#FFF7FC" Click="StartButton_Click"
+                FontFamily="Fonts/Tauri-Regular.ttf # Tauri Regular" FontSize="24"
+                MaxHeight="100" MinHeight="30"
+                BorderThickness="0">START</Button>
     </Grid>
 </Window>

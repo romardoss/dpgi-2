@@ -96,13 +96,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\remove.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\add.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icons\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\remove.png" />
+    <Resource Include="icons\add.png" />
+    <Content Include="Sound\alarm_beep.wav" />
+    <Content Include="Sound\disconnect.wav" />
+    <Content Include="Sound\drum.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
