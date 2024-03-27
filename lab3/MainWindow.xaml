@@ -74,8 +74,8 @@
             <RowDefinition Height="72"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="True">
-            <Button x:Name="CloseButton" DockPanel.Dock="Right" Click="CloseButton_Click">
-                <Image Source="/icons/close.png"/>
+            <Button x:Name="InfoButton" DockPanel.Dock="Right" Width="24" Height="24" Margin="10" Click="InfoButton_Click">
+                <Image Source="/icons/help.png" />
             </Button>
             <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="15">Interval Timer</TextBlock>
         </DockPanel>

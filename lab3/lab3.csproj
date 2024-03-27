@@ -103,6 +103,8 @@
     <Resource Include="icons\add.png" />
     <Resource Include="icons\add_pink.png" />
     <Resource Include="icons\remove_pink.png" />
+    <Resource Include="icons\help.png" />
+    <Resource Include="icons\help_pink.png" />
     <Content Include="Sound\alarm_beep.wav" />
     <Content Include="Sound\disconnect.wav" />
     <Content Include="Sound\drum.mp3" />
