@@ -31,11 +31,14 @@ namespace lab3
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             //var path = Environment.CurrentDirectory + "Sound\\The_xx_-_Intro.mp3";
-            var path = "E:\\all_projects\\6sem\\interfaces\\dgpi-2\\lab3\\Sound\\alarm_beep.wav";
+            /*var path = "E:\\all_projects\\6sem\\interfaces\\dgpi-2\\lab3\\Sound\\alarm_beep.wav";
             SoundPlayer sound = new SoundPlayer(path);
             
             sound.Load();
-            sound.Play();
+            sound.Play();*/
+            TimerWindow timerWindow = new TimerWindow();
+            timerWindow.Show();
+            Close();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
