@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab3.Setup;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
@@ -36,6 +37,12 @@ namespace lab3
             
             sound.Load();
             sound.Play();*/
+
+            TimeSpan work = new TimeSpan(0, int.Parse(WorkMinBox.Text), int.Parse(WorkSecBox.Text));
+            TimeSpan rest = new TimeSpan(0, int.Parse(RestMinBox.Text), int.Parse(RestSecBox.Text));
+            SetupParameters.Work = work; 
+            SetupParameters.Rest = rest;
+            SetupParameters.Sets = int.Parse(SetsBox.Text);
             TimerWindow timerWindow = new TimerWindow();
             timerWindow.Show();
             Close();

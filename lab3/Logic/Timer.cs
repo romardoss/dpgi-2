@@ -31,16 +31,18 @@ namespace lab3.Logic
             }
         }
 
-        public Timer(int minutes, int seconds)
+        public Timer(int minutes, int seconds) : this(new TimeSpan(0, minutes, seconds))
         {
+        }
+
+        public Timer(TimeSpan duration)
+        {
+            minutes = duration.Minutes;
+            seconds = duration.Seconds;
+            this.duration = duration;
             timer = new System.Timers.Timer(1000);
-            this.minutes = minutes;
-            this.seconds = seconds;
-            duration = new TimeSpan(0, minutes, seconds);
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
-            //externalTimer = ext;
-            //this.textBlock = textBlock;
         }
 
         public void ResetTimer()
@@ -65,7 +67,7 @@ namespace lab3.Logic
             timer.Enabled = true;
         }
 
-        private void DisposeTimer()
+        public void DisposeTimer()
         {
             timer.Stop();
             timer.Dispose();

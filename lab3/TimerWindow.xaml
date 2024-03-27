@@ -17,10 +17,8 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0">
-            
-        </Border>
-        <TextBlock x:Name="TimeTextBox" Grid.Row="1" FontSize="82" VerticalAlignment="Bottom"></TextBlock>
+        <TextBlock x:Name="SetsBlock" Grid.Row="0" FontSize="46" VerticalAlignment="Bottom">5</TextBlock>
+        <TextBlock x:Name="TimeTextBox" Grid.Row="1" FontSize="82" VerticalAlignment="Bottom">00:00</TextBlock>
         <TextBlock x:Name="ActivityTextBox" Grid.Row="2" FontSize="50" Foreground="#7FFFF7FC" >PREPARE</TextBlock>
         <DockPanel Grid.Row="3">
             <Button x:Name="CloseButton" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="38" Height="38" Margin="10" Click="CloseButton_Click">
