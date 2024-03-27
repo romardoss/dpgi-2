@@ -28,27 +28,17 @@ namespace lab3
             InitializeComponent();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void AudioSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            _ = new MediaElement
-            {
-                Volume = (double)e.NewValue
-            };
-        }
-
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             //var path = Environment.CurrentDirectory + "Sound\\The_xx_-_Intro.mp3";
-            var path = "E:\\all_projects\\6sem\\interfaces\\dgpi-2\\lab3\\Sound\\alarm_beep.wav";
+            /*var path = "E:\\all_projects\\6sem\\interfaces\\dgpi-2\\lab3\\Sound\\alarm_beep.wav";
             SoundPlayer sound = new SoundPlayer(path);
             
             sound.Load();
-            sound.Play();
+            sound.Play();*/
+            TimerWindow timerWindow = new TimerWindow();
+            timerWindow.Show();
+            Close();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -150,6 +140,11 @@ namespace lab3
             else { num--; }
 
             boxName.Text = num.ToString();
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Автор: Берегун Роман, ТР-11");
         }
     }
 }

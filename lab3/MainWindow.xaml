@@ -5,67 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400" Background="#FF71CD"
-        WindowStyle="ToolWindow">
+        Title="Interval Timer" Height="450" Width="400" Background="#FF71CD"
+        WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
-                 TargetType="Button">
-            <Border Background="{TemplateBinding Background}"  
-          BorderBrush="{TemplateBinding BorderBrush}"  
-          BorderThickness="{TemplateBinding BorderThickness}">
-                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
-                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-            </Border>
-
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled"  
-             Value="False">
-                    <Setter Property="Background"  
-              Value="{x:Static SystemColors.ControlLightBrush}" />
-                    <Setter Property="Foreground"  
-              Value="{x:Static SystemColors.GrayTextBrush}" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Margin" Value="20, 0, 20, 0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Template" Value="{StaticResource NoMouseOverButtonTemplate}"/>
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="#FFF7FC"/>
-            <Setter Property="FontFamily" Value="Fonts/Tauri-Regular.ttf # Tauri Regular"/>
-            <Setter Property="FontSize" Value="18"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#FFF7FC"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF71CD"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="StackPanel">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="Image">
-            <Setter Property="Opacity" Value="30"/>
-        </Style>
+        
     </Window.Resources>
-    <Grid Margin="0" Background="#5755FE">
+    <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -74,8 +19,8 @@
             <RowDefinition Height="72"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="True">
-            <Button x:Name="CloseButton" DockPanel.Dock="Right" Click="CloseButton_Click">
-                <Image Source="/icons/close.png"/>
+            <Button x:Name="InfoButton" DockPanel.Dock="Right" Width="24" Height="24" Margin="10" Click="InfoButton_Click">
+                <Image Source="/icons/help.png" />
             </Button>
             <TextBlock DockPanel.Dock="Left" TextAlignment="Left" FontSize="32" Margin="15">Interval Timer</TextBlock>
         </DockPanel>
@@ -120,9 +65,9 @@
             </StackPanel>
         </StackPanel>
         <Button x:Name="StartButton" Grid.Row="4" Style="{x:Null}" Background="#8B93FF" 
-                Foreground="#FFF7FC" Click="StartButton_Click"
+                Foreground="#FFF7FC" 
                 FontFamily="Fonts/Tauri-Regular.ttf # Tauri Regular" FontSize="24"
                 MaxHeight="100" MinHeight="30"
-                BorderThickness="0">START</Button>
+                BorderThickness="0" Click="StartButton_Click">START</Button>
     </Grid>
 </Window>
