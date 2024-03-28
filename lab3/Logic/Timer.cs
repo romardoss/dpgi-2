@@ -12,7 +12,7 @@ namespace lab3.Logic
     public class Timer
     {
         private readonly System.Timers.Timer timer;
-        private TimeSpan duration;
+        public TimeSpan _duration;
         private readonly int minutes;
         private readonly int seconds;
 
@@ -23,29 +23,39 @@ namespace lab3.Logic
         //private TimeSpan externalTimer;
         //private TextBlock textBlock;
 
-        public string Duration
+        public string duration
         {
             get
             {
-                return $"{duration:mm\\:ss}";
+                return $"{_duration:mm\\:ss}";
             }
         }
 
-        public Timer(int minutes, int seconds)
+        public TimeSpan Duration
         {
+            get
+            {
+                return _duration;
+            }
+        }
+
+        public Timer(int minutes, int seconds) : this(new TimeSpan(0, minutes, seconds))
+        {
+        }
+
+        public Timer(TimeSpan duration)
+        {
+            minutes = duration.Minutes;
+            seconds = duration.Seconds;
+            this._duration = duration;
             timer = new System.Timers.Timer(1000);
-            this.minutes = minutes;
-            this.seconds = seconds;
-            duration = new TimeSpan(0, minutes, seconds);
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
-            //externalTimer = ext;
-            //this.textBlock = textBlock;
         }
 
         public void ResetTimer()
         {
-            duration = new TimeSpan(0, minutes, seconds);
+            _duration = new TimeSpan(0, minutes, seconds);
         }
 
         public void RestartTimer()
@@ -57,7 +67,7 @@ namespace lab3.Logic
 
         public bool IsFinished()
         {
-            return duration.Seconds == 0 && duration.Minutes == 0;
+            return _duration.Seconds == 0 && _duration.Minutes == 0;
         }
 
         public void StartTimer()
@@ -65,7 +75,7 @@ namespace lab3.Logic
             timer.Enabled = true;
         }
 
-        private void DisposeTimer()
+        public void DisposeTimer()
         {
             timer.Stop();
             timer.Dispose();
@@ -78,7 +88,7 @@ namespace lab3.Logic
             //textBlock.Text = $"{duration:mm\\:ss}";
             //MessageBox.Show($"{duration:mm\\:ss}");
             
-            duration = duration.Subtract(new TimeSpan(0, 0, 1));
+            _duration = _duration.Subtract(new TimeSpan(0, 0, 1));
             //textBlock.Text = $"{duration:mm\\:ss}";
             //externalTimer = externalTimer.Subtract(new TimeSpan(0, 0, 1));
 
