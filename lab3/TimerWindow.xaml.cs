@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using lab3.Effects;
 using lab3.Logic;
 using lab3.Setup;
 
@@ -40,15 +42,18 @@ namespace lab3
             TimerWork = new Logic.Timer(SetupParameters.Work);
             TimerWork.TTimer.Elapsed += UpdateTextBox;
             TimerWork.TTimer.Elapsed += SwitchTimer;
+            TimerWork.TTimer.Elapsed += PlaySound;
             TimerRest = new Logic.Timer(SetupParameters.Rest);
             TimerRest.TTimer.Elapsed += UpdateTextBox;
             TimerRest.TTimer.Elapsed += SwitchTimer;
+            TimerRest.TTimer.Elapsed += PlaySound;
             TimerPreparation = new Logic.Timer(0, 5);
             TimerPreparation.TTimer.Elapsed += UpdateTextBox;
             TimerPreparation.TTimer.Elapsed += SwitchTimer;
+            TimerPreparation.TTimer.Elapsed += PlaySound;
 
             CurrentTimer = TimerPreparation;
-            TimeTextBox.Text = CurrentTimer.Duration.ToString();
+            TimeTextBox.Text = CurrentTimer.duration.ToString();
             TimerPreparation.StartTimer();
             IsPaused = false;
 
@@ -59,6 +64,10 @@ namespace lab3
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
+            TimerWork.DisposeTimer();
+            TimerRest.DisposeTimer();
+            TimerPreparation.DisposeTimer();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
@@ -66,6 +75,7 @@ namespace lab3
 
         private void PausePlayButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             if (!IsPaused)
             {
                 MainGrid.Background = new SolidColorBrush(Color.FromRgb(250, 163, 0));
@@ -87,8 +97,16 @@ namespace lab3
         {
             Dispatcher.Invoke(() =>
             {
-                TimeTextBox.Text = CurrentTimer.Duration.ToString();
+                TimeTextBox.Text = CurrentTimer.duration.ToString();
             });
+        }
+
+        private void PlaySound(object sender, ElapsedEventArgs e)
+        {
+            if(CurrentTimer.Duration.TotalSeconds < 3)
+            {
+                Sound.PlayAttentionSound();
+            }
         }
 
         private void UpdateActivityBox()
@@ -153,7 +171,9 @@ namespace lab3
         {
             if (CurrentTimer.IsFinished()) 
             {
+                Sound.PlayAttentionSound();
                 System.Threading.Thread.Sleep(1000);
+                
                 if (CurrentTimer.Equals(TimerPreparation))
                 {
                     CurrentTimer = TimerWork;
@@ -176,10 +196,12 @@ namespace lab3
                     CurrentTimer.RestartTimer();
                     UpdateTextBox(sender, e);
                     CurrentTimer.StartTimer();
+                    Sound.PlayStartSound();
                 }
                 else
                 {
-                    System.Threading.Thread.Sleep(1000);
+                    Sound.PlayFinishSound();
+                    //System.Threading.Thread.Sleep(1000);
                     MessageBox.Show("You`ve finished!");
                     //MainWindow mainWindow = new MainWindow();
                     //mainWindow.Show();

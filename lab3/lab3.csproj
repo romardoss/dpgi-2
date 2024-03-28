@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Effects\Sound.cs" />
     <Compile Include="Logic\Timer.cs" />
     <Compile Include="Setup\SetupParameters.cs" />
     <Compile Include="TimerWindow.xaml.cs">
@@ -114,9 +115,12 @@
     <Resource Include="icons\cancel.png" />
     <Resource Include="icons\pause.png" />
     <Resource Include="icons\play.png" />
-    <Content Include="Sound\alarm_beep.wav" />
-    <Content Include="Sound\disconnect.wav" />
-    <Content Include="Sound\drum.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Effects\Sound\beep-1.wav" />
+    <Content Include="Effects\Sound\beep-10.wav" />
+    <Content Include="Effects\Sound\beep-3.wav" />
+    <Content Include="Effects\Sound\blip-1.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

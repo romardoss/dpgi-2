@@ -8,9 +8,9 @@ namespace lab3.Setup
 {
     public static class SetupParameters
     {
-        private static int sets = 1;
-        private static TimeSpan work = new TimeSpan(0, 1, 15);
-        private static TimeSpan rest = new TimeSpan(0, 0, 30);
+        private static int sets = 5;
+        private static TimeSpan work = new TimeSpan(0, 0, 1);
+        private static TimeSpan rest = new TimeSpan(0, 0, 0);
 
         public static int Sets
         {
@@ -29,7 +29,7 @@ namespace lab3.Setup
             get { return work; }
             set
             {
-                if(value.TotalSeconds > 0 && value.TotalMinutes < 100)
+                if(value.TotalSeconds > 1 && value.TotalMinutes < 100)
                 {
                     work = value;
                 }

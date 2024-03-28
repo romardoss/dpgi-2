@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
+using lab3.Effects;
 
 namespace lab3
 {
@@ -27,6 +28,15 @@ namespace lab3
         public MainWindow()
         {
             InitializeComponent();
+            SetsBox.Text = SetupParameters.Sets.ToString();
+            WorkMinBox.Text = SetupParameters.Work.Minutes.ToString();
+            WorkSecBox.Text = SetupParameters.Work.Seconds.ToString();
+            RestMinBox.Text = SetupParameters.Rest.Minutes.ToString();
+            RestSecBox.Text = SetupParameters.Rest.Seconds.ToString();
+            TextBox_LostFocus(WorkMinBox, null);
+            TextBox_LostFocus(WorkSecBox, null);
+            TextBox_LostFocus(RestMinBox, null);
+            TextBox_LostFocus(RestSecBox, null);
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -37,7 +47,7 @@ namespace lab3
             
             sound.Load();
             sound.Play();*/
-
+            Sound.PlayStartSound();
             TimeSpan work = new TimeSpan(0, int.Parse(WorkMinBox.Text), int.Parse(WorkSecBox.Text));
             TimeSpan rest = new TimeSpan(0, int.Parse(RestMinBox.Text), int.Parse(RestSecBox.Text));
             SetupParameters.Work = work; 
@@ -102,34 +112,40 @@ namespace lab3
 
         private void SetsPlusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(SetsBox, true);
         }
 
         private void SetsMinusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(SetsBox, false);
         }
 
         private void WorkMinusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(WorkSecBox, false);
             TextBox_LostFocus(WorkSecBox, e);
         }
 
         private void WorkPlusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(WorkSecBox, true);
             TextBox_LostFocus(WorkSecBox, e);
         }
 
         private void RestMinusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(RestSecBox, false);
             TextBox_LostFocus(RestSecBox, e);
         }
 
         private void RestPlusButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             PlusMinusButton(RestSecBox, true);
             TextBox_LostFocus(RestSecBox, e);
         }
@@ -151,6 +167,7 @@ namespace lab3
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
+            Sound.PlayButtonSound();
             MessageBox.Show("Автор: Берегун Роман, ТР-11");
         }
     }
