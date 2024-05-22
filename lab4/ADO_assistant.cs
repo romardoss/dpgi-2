@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using lab4.Data;
 
@@ -14,11 +10,10 @@ namespace lab4
     {
         readonly String connectionString = System.Configuration.
             ConfigurationManager.ConnectionStrings["connectionString_ADO"].ConnectionString;
-
         DataTable dt = null;
+
         public DataTable TableLoad()
         {
-            if (dt != null) return dt;
             dt = new DataTable();
 
             using (SqlConnection сonnection = new SqlConnection(connectionString))
@@ -44,7 +39,8 @@ namespace lab4
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "Insert into Clients (Name, Phone, Address, Income, Spendings) values (@Name, @Phone, @Address, @Income, @Spendings)";
+                command.CommandText = "Insert into Clients (Id, Name, Phone, Address, Income, Spendings) values (@Id, @Name, @Phone, @Address, @Income, @Spendings)";
+                command.Parameters.AddWithValue("@Id", client.Id);
                 command.Parameters.AddWithValue("@Name", client.Name);
                 command.Parameters.AddWithValue("@Phone", client.Phone);
                 command.Parameters.AddWithValue("@Address", client.Address);
@@ -60,9 +56,10 @@ namespace lab4
                         MessageBox.Show("Помилка в доданні клієнта");
                     }
                 }
-                catch(Exception) 
+                catch(Exception e) 
                 {
                     MessageBox.Show("Помилка в доданні клієнта");
+                    MessageBox.Show(e.Message);
                 }
 
             }
