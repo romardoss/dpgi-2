@@ -12,7 +12,7 @@
             <Button x:Name="UpdateButton" Content="Update" Width="50" Click="UpdateButton_Click"/>
             <Button x:Name="DeleteButton" Content="Delete" Width="50" Click="DeleteButton_Click"/>
         </StackPanel>
-        <ListBox x:Name="list" ItemsSource="{Binding}" DisplayMemberPath="Address">
+        <ListBox x:Name="list" ItemsSource="{Binding}" DisplayMemberPath="Name">
             
         </ListBox>
         <Grid DockPanel.Dock="Bottom" ShowGridLines="True" DataContext="{Binding ElementName=list, Path=SelectedItem}">
